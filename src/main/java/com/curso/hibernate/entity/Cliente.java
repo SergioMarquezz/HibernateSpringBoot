@@ -8,14 +8,18 @@ public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
+    @Column(name = "id")
     private int idCliente;
-    @Column(name = "Nombre")
+    @Column(name = "nombre")
     private String nombreCliente;
-    @Column(name = "Apellidos")
+    @Column(name = "apellidos")
     private String apellidosCliente;
-    @Column(name = "Direccion")
+    @Column(name = "direccion")
     private String direccionCliente;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
+    private DetallesCliente clientesDetalle;
 
     public Cliente() {}
 
@@ -57,13 +61,11 @@ public class Cliente {
         this.direccionCliente = direccionCliente;
     }
 
-    @Override
-    public String toString() {
-        return "Cliente{" +
-                "idCliente=" + idCliente +
-                ", nombreCliente='" + nombreCliente + '\'' +
-                ", apellidosCliente='" + apellidosCliente + '\'' +
-                ", direccionCliente='" + direccionCliente + '\'' +
-                '}';
+    public DetallesCliente getClientesDetalle() {
+        return clientesDetalle;
+    }
+
+    public void setClientesDetalle(DetallesCliente clientesDetalle) {
+        this.clientesDetalle = clientesDetalle;
     }
 }
