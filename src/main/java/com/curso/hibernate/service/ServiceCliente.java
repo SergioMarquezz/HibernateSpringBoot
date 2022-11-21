@@ -25,5 +25,18 @@ public class ServiceCliente implements ClienteDao {
     @Override
     public List<Cliente> buscarTodos() {
         return daoCliente.findAll();
+
+    }
+
+    @Override
+    public Optional<Cliente> buscarById(Integer id) {
+        return daoCliente.findById(id);
+
+
+    }
+
+    @Override
+    public void deleteCliente(Integer id) {
+        daoCliente.deleteById(id);
     }
 }

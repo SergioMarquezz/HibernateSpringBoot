@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Optional;
+
 @Controller
 @RequestMapping("/clientes")
 public class ClienteController {
@@ -27,6 +29,30 @@ public class ClienteController {
     public void buscarCliente(){
 
         System.out.println(serviceCliente.buscarTodos());
+    }
+
+    @GetMapping("/actualizar")
+    public void actualizarCliente(){
+
+        Optional<Cliente> usuario = serviceCliente.buscarById(2);
+        if (usuario.isPresent()){
+
+            Cliente cliente = usuario.get();
+            cliente.setNombreCliente("Alberto");
+            serviceCliente.guardarCliente(cliente);
+        }
+    }
+
+    @GetMapping("/borrar")
+    public void borrarCliente(){
+
+        Optional<Cliente> usuario = serviceCliente.buscarById(2);
+        if (usuario.isPresent()){
+
+            Cliente cliente = usuario.get();
+            int idCliente = cliente.getIdCliente();
+            serviceCliente.deleteCliente(idCliente);
+        }
     }
 
 }
