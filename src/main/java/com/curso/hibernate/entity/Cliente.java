@@ -68,4 +68,14 @@ public class Cliente {
     public void setClientesDetalle(DetallesCliente clientesDetalle) {
         this.clientesDetalle = clientesDetalle;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "idCliente=" + idCliente +
+                ", nombreCliente='" + nombreCliente + '\'' +
+                ", apellidosCliente='" + apellidosCliente + '\'' +
+                ", direccionCliente='" + direccionCliente + '\'' +
+                '}';
+    }
 }

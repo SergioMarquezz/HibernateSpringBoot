@@ -17,6 +17,9 @@ public class DetallesCliente {
     @Column(name = "comentarios")
     private String comentarios;
 
+    @OneToOne(mappedBy = "clientesDetalle", cascade = CascadeType.ALL)
+    private Cliente elCliente;
+
     public DetallesCliente() {}
 
     public DetallesCliente(String web, String telefono, String comentarios) {
@@ -57,5 +60,21 @@ public class DetallesCliente {
         this.comentarios = comentarios;
     }
 
+    public Cliente getElCliente() {
+        return elCliente;
+    }
 
+    public void setElCliente(Cliente elCliente) {
+        this.elCliente = elCliente;
+    }
+
+    @Override
+    public String toString() {
+        return "DetallesCliente{" +
+                "idCliente=" + idCliente +
+                ", web='" + web + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", comentarios='" + comentarios + '\'' +
+                '}';
+    }
 }
