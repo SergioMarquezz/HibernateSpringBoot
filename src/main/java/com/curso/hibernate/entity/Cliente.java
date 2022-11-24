@@ -1,6 +1,8 @@
 package com.curso.hibernate.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "clientes")
@@ -21,12 +23,25 @@ public class Cliente {
     @JoinColumn(name = "id")
     private DetallesCliente clientesDetalle;
 
+    @OneToMany(mappedBy = "cliente", cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH, CascadeType.REFRESH })
+    private List<Pedido> pedidos;
+
     public Cliente() {}
 
     public Cliente(String nombreCliente, String apellidosCliente, String direccionCliente) {
         this.nombreCliente = nombreCliente;
         this.apellidosCliente = apellidosCliente;
         this.direccionCliente = direccionCliente;
+    }
+
+    public void agregarPedido(Pedido elPedido){
+
+        if (pedidos == null){
+            pedidos = new ArrayList<>();
+            pedidos.add(elPedido);
+
+            elPedido.setCliente(this);
+        }
     }
 
     public int getIdCliente() {
