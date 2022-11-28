@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "pedios")
+@Table(name = "pedidos")
 public class Pedido {
 
     @Id
@@ -17,12 +17,14 @@ public class Pedido {
     private String formaPago;
 
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH, CascadeType.REFRESH })
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "idCliente")
     private Cliente cliente;
 
     public Pedido(Date fecha) {
         this.fecha = fecha;
     }
+
+    public Pedido() {}
 
     public String getFormaPago() {
         return formaPago;
