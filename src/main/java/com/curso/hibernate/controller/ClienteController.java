@@ -22,7 +22,7 @@ public class ClienteController {
 
     @GetMapping("/guardar")
     public void saveCliente(){
-        Cliente usuario = new Cliente("Albina","Victoriano","CDMX");
+        Cliente usuario = new Cliente("Marcela","Moreno","Tulancingo");
         DetallesCliente detallesUsuario = new DetallesCliente("www.facebook.com","5534292267","Segundo detalle Cliente");
 
         //Asociar los objetos para guardar en BD

@@ -2,6 +2,7 @@ package com.curso.hibernate.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 @Entity
 @Table(name = "pedidos")
@@ -12,7 +13,7 @@ public class Pedido {
     @Column(name = "id")
     private int id;
     @Column(name = "fechaPago")
-    private Date fecha;
+    private GregorianCalendar fecha;
     @Column(name = "pagoFoma")
     private String formaPago;
 
@@ -20,7 +21,7 @@ public class Pedido {
     @JoinColumn(name = "idCliente")
     private Cliente cliente;
 
-    public Pedido(Date fecha) {
+    public Pedido(GregorianCalendar fecha) {
         this.fecha = fecha;
     }
 
