@@ -18,20 +18,23 @@ public class Cliente {
     private String apellidosCliente;
     @Column(name = "direccion")
     private String direccionCliente;
+    @Column(name = "correo")
+    private String email;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id")
     private DetallesCliente clientesDetalle;
 
-    @OneToMany(mappedBy = "cliente", cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH, CascadeType.REFRESH })
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "cliente", cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH, CascadeType.REFRESH })
     private List<Pedido> pedidos;
 
     public Cliente() {}
 
-    public Cliente(String nombreCliente, String apellidosCliente, String direccionCliente) {
+    public Cliente(String nombreCliente, String apellidosCliente, String direccionCliente, String email) {
         this.nombreCliente = nombreCliente;
         this.apellidosCliente = apellidosCliente;
         this.direccionCliente = direccionCliente;
+        this.email = email;
     }
 
     public void agregarPedido(Pedido elPedido){
@@ -90,6 +93,14 @@ public class Cliente {
 
     public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
