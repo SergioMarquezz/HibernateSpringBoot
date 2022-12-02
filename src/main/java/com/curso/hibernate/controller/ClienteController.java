@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -23,12 +24,19 @@ public class ClienteController {
 
     @GetMapping("/guardar")
     public void saveCliente(){
-        Cliente usuario = new Cliente("Marcela","Moreno","Tulancingo");
-        DetallesCliente detallesUsuario = new DetallesCliente("www.facebook.com","5534292267","Segundo detalle Cliente");
-
+        Cliente usuarioDavid = new Cliente("David","Maldonado","Tulancingo","davidM@gmail.com");
+     //   DetallesCliente detallesUsuario = new DetallesCliente("www.facebook.com","5534292267","Segundo detalle Cliente");
+        Cliente usuarioSandra = new Cliente("Sandra","López","Mexico","sandyL@gmail.com");
+        Cliente usuarioMaria = new Cliente("María","Gómez","Pachuca","mariL@gmail.com");
+        Cliente usuarioAntonio= new Cliente("Antonio","Fernández","Santiago","fernandezA@gmail.com");
+        Cliente usuarioAlicia = new Cliente("Alicia","Martín","Queretaro","aliciaM@gmail.com");
         //Asociar los objetos para guardar en BD
-        usuario.setClientesDetalle(detallesUsuario);
-        serviceCliente.guardarCliente(usuario);
+       // usuario.setClientesDetalle(detallesUsuario);
+        serviceCliente.guardarCliente(usuarioSandra);
+        serviceCliente.guardarCliente(usuarioMaria);
+        serviceCliente.guardarCliente(usuarioAntonio);
+        serviceCliente.guardarCliente(usuarioAlicia);
+        serviceCliente.guardarCliente(usuarioDavid);
 
        /* Cliente usuario2 = new Cliente("Luz Arelly","Moreno","Pachuca");
         serviceCliente.guardarCliente(usuario2);*/
@@ -72,6 +80,10 @@ public class ClienteController {
 
     @GetMapping("/lista")
     public String listaCliente(Model model){
+
+        List<Cliente> losClientes = serviceCliente.buscarTodos();
+        model.addAttribute("clientes",losClientes);
+
         return "views/lista-clientes";
     }
 

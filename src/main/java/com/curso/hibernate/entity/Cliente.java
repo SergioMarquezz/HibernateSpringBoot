@@ -30,7 +30,7 @@ public class Cliente {
 
     public Cliente() {}
 
-    public Cliente(String nombreCliente, String apellidosCliente, String direccionCliente, String email) {
+    public Cliente(String nombreCliente, String apellidosCliente, String direccionCliente,String email) {
         this.nombreCliente = nombreCliente;
         this.apellidosCliente = apellidosCliente;
         this.direccionCliente = direccionCliente;
