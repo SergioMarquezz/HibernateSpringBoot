@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -85,6 +86,15 @@ public class ClienteController {
         model.addAttribute("clientes",losClientes);
 
         return "views/lista-clientes";
+    }
+
+    @GetMapping("/showFormAgregar")
+    public String agregarClientes(Model model){
+
+        Cliente elCliente = new Cliente();
+        model.addAttribute("cliente",elCliente);
+
+        return "views/agregar-clientes";
     }
 
 }

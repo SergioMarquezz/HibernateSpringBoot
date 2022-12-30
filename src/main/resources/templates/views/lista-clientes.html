@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <!--<link th:href="@{/node_modules/bootstrap/dist/css/bootstrap.css}" rel="stylesheet">-->
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
 </head>
 <body>
     <h1>Se muestra la vista de futuros clientes</h1>
@@ -20,5 +23,8 @@
             </tr>
         </tbody>
     </table>
+
+<br>
+<input type="button" value="Agregar Cliente" onclick="window.location.href='showFormAgregar'; return false;">
 </body>
 </html>
