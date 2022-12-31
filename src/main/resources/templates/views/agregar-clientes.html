@@ -6,6 +6,13 @@
     <link rel="stylesheet" th:href="@{/css/estilos.css}">
 </head>
 <body>
-  <h1>Pagina para agregar clientes</h1>
+    <form th:action="@{/clientes/insertarCliente}" method="post" enctype="multipart/form-data">
+            Nombre: <input type="text" class="form-control" id="nombre" name="nombreCliente" placeholder="Ingrese el nombre del producto" autocomplete="off" required> <br><br>
+            Apellido: <input type="text" class="form-control" id="apellido" name="apellidosCliente" placeholder="Ingrese el nombre del producto" autocomplete="off" required><br><br>
+            Correo: <input type="text" class="form-control" id="correo" name="email" placeholder="Ingrese el nombre del producto" autocomplete="off" required><br><br>
+            Dirreccion: <input type="text" class="form-control" id="direccion" name="direccionCliente" placeholder="Ingrese el nombre del producto" autocomplete="off" required><br><br>
+        <button type="submit" class="btn btn-success">Guardar</button>
+
+    </form>
 </body>
 </html>
