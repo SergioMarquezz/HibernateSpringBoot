@@ -39,4 +39,10 @@ public class ServiceCliente implements ClienteDao {
     public void deleteCliente(Integer id) {
         daoCliente.deleteById(id);
     }
+
+    @Override
+    public void updateCliente(Cliente cliente) {
+
+        daoCliente.save(cliente);
+    }
 }

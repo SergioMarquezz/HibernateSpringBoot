@@ -7,10 +7,7 @@ import com.curso.hibernate.service.ServiceDetalleCliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -104,6 +101,19 @@ public class ClienteController {
         serviceCliente.guardarCliente(elCliente);
 
         return "redirect:/clientes/lista";
+    }
+
+    @GetMapping("/editar/{id}")
+    public String editarCliente(Model model, @PathVariable int id){
+
+        Optional<Cliente> usuario = serviceCliente.buscarById(id);
+        if (usuario.isPresent()){
+
+            Cliente cliente = usuario.get();
+            model.addAttribute("cliente",cliente);
+        }
+
+        return "views/agregar-clientes";
     }
 
 }

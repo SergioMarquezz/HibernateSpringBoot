@@ -15,11 +15,13 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Email</th>
+                <th>Modificar</th>
             </tr>
             <tr th:each="user: ${clientes}">
                 <td th:text="${user.nombreCliente}"></td>
                 <td th:text="${user.apellidosCliente}"></td>
                 <td th:text="${user.email}"></td>
+                <td><a class="btn btn-warning" th:href="@{/clientes/editar/{id} (id=${user.idCliente})}">Editar</a></td>
             </tr>
         </tbody>
     </table>

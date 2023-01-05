@@ -11,4 +11,5 @@ public interface ClienteDao {
     List<Cliente> buscarTodos();
     Optional<Cliente> buscarById(Integer id);
     void deleteCliente(Integer id);
+    void updateCliente(Cliente cliente);
 }
