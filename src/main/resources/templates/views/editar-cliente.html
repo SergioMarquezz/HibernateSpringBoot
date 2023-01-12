@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+<form th:action="@{/clientes/updateCliente}" method="post" enctype="multipart/form-data">
+  <input type="text" th:value="${cliente.idCliente}" name="idCliente"> <br>
+  Nombre: <input type="text" class="form-control" id="nombre" th:value="${cliente.nombreCliente}" name="nombreCliente" placeholder="Ingrese el nombre del producto" autocomplete="off" required> <br><br>
+  Apellido: <input type="text" class="form-control" id="apellido" th:value="${cliente.apellidosCliente}" name="apellidosCliente" placeholder="Ingrese el nombre del producto" autocomplete="off" required><br><br>
+  Correo: <input type="text" class="form-control" id="correo" th:value="${cliente.email}" name="email" placeholder="Ingrese el nombre del producto" autocomplete="off" required><br><br>
+  Dirreccion: <input type="text" class="form-control" id="direccion" th:value="${cliente.direccionCliente}" name="direccionCliente" placeholder="Ingrese el nombre del producto" autocomplete="off" required><br><br>
+  <button type="submit" class="btn btn-success">Editar</button>
+</form>
+</body>
+</html>

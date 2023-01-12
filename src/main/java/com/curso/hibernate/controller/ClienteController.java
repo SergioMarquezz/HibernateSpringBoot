@@ -96,7 +96,7 @@ public class ClienteController {
     }
 
     @PostMapping("/insertarCliente")
-    public String agregarCliente(Model model, @ModelAttribute("cliente") Cliente elCliente){
+    public String agregarCliente(@ModelAttribute("cliente") Cliente elCliente){
 
         serviceCliente.guardarCliente(elCliente);
 
@@ -104,7 +104,7 @@ public class ClienteController {
     }
 
     @GetMapping("/editar/{id}")
-    public String editarCliente(Model model, @PathVariable int id){
+    public String showUpdateCliente(Model model, @PathVariable int id){
 
         Optional<Cliente> usuario = serviceCliente.buscarById(id);
         if (usuario.isPresent()){
@@ -112,8 +112,22 @@ public class ClienteController {
             Cliente cliente = usuario.get();
             model.addAttribute("cliente",cliente);
         }
+        return "views/editar-cliente";
+    }
 
-        return "views/agregar-clientes";
+    @PostMapping("/updateCliente")
+    public String editarCliente(@ModelAttribute("cliente") Cliente elCliente){
+
+        Cliente user = new Cliente();
+        user = serviceCliente.buscarById(elCliente.getIdCliente()).get();
+        user.setNombreCliente(elCliente.getNombreCliente());
+        user.setApellidosCliente(elCliente.getApellidosCliente());
+        user.setEmail(elCliente.getEmail());
+        user.setDireccionCliente(elCliente.getDireccionCliente());
+
+        serviceCliente.updateCliente(user);
+
+        return "redirect:/clientes/lista";
     }
 
 }
