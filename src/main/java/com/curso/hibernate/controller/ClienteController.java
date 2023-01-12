@@ -130,4 +130,15 @@ public class ClienteController {
         return "redirect:/clientes/lista";
     }
 
+    @GetMapping("/eliminar/{id}")
+    public String eliminarCliente(@PathVariable Integer id) {
+
+        Cliente usuario = new Cliente();
+        usuario = serviceCliente.buscarById(id).get();
+
+        serviceCliente.deleteCliente(usuario.getIdCliente());
+
+        return "redirect:/clientes/lista";
+    }
+
 }

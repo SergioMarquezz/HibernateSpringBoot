@@ -16,12 +16,14 @@
                 <th>Apellido</th>
                 <th>Email</th>
                 <th>Modificar</th>
+                <th>Eliminar</th>
             </tr>
             <tr th:each="user: ${clientes}">
                 <td th:text="${user.nombreCliente}"></td>
                 <td th:text="${user.apellidosCliente}"></td>
                 <td th:text="${user.email}"></td>
-                <td><a class="btn btn-warning" th:href="@{/clientes/editar/{id} (id=${user.idCliente})}">Editar</a></td>
+                <td><a th:href="@{/clientes/editar/{id} (id=${user.idCliente})}">Editar</a></td>
+                <td><a th:href="@{/clientes/eliminar/{id} (id=${user.idCliente})}" onclick="if(!(confirm('Se eliminara un registro'))) return false">Eliminar</a></td>
             </tr>
         </tbody>
     </table>
